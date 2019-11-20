@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.siit.fc.mapper.FcTimerTasksMapper">
+	<resultMap id="BaseResultMap" type="com.siit.fc.model.FcTimerTasks">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="IMAGE_TOKEN" property="imageToken" jdbcType="VARCHAR" />
+		<result column="SOURCE_FILE_TYPE" property="sourceFileType" jdbcType="VARCHAR" />
+		<result column="SOURCE_FILE_MD5" property="sourceFileMd5" jdbcType="VARCHAR" />
+		<result column="SOURCE_FILE_PATH" property="sourceFilePath" jdbcType="VARCHAR" />
+		<result column="TARGET_FILE_TYPE" property="targetFileType" jdbcType="VARCHAR" />
+		<result column="TARGET_FILE_MD5" property="targetFileMd5" jdbcType="VARCHAR" />
+		<result column="TARGET_FILE_PATH" property="targetFilePath" jdbcType="VARCHAR" />
+		<result column="HANDLE_CODE" property="handleCode" jdbcType="VARCHAR" />
+		<result column="HANDLE_TIME" property="handleTime" jdbcType="TIMESTAMP" />
+		<result column="HANDLE_STATE" property="handleState" jdbcType="VARCHAR" />
+		<result column="HANDLE_MSG" property="handleMsg" jdbcType="VARCHAR" />
+		<result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="LAST_UPDATE_TIME" property="lastUpdateTime" jdbcType="TIMESTAMP" />
+		<result column="HANDLE_COUNT" property="handleCount" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, IMAGE_TOKEN, SOURCE_FILE_TYPE, SOURCE_FILE_MD5, SOURCE_FILE_PATH, TARGET_FILE_TYPE,
+		TARGET_FILE_MD5, TARGET_FILE_PATH, HANDLE_CODE, HANDLE_TIME, HANDLE_STATE, HANDLE_MSG,
+		CREATE_TIME, LAST_UPDATE_TIME, HANDLE_COUNT
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from fc_timer_tasks
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from fc_timer_tasks
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.siit.fc.model.FcTimerTasks">
+		insert into fc_timer_tasks (ID, IMAGE_TOKEN, SOURCE_FILE_TYPE,
+		SOURCE_FILE_MD5, SOURCE_FILE_PATH, TARGET_FILE_TYPE,
+		TARGET_FILE_MD5, TARGET_FILE_PATH, HANDLE_CODE,
+		HANDLE_TIME, HANDLE_STATE, HANDLE_MSG, CREATE_TIME,
+		LAST_UPDATE_TIME, HANDLE_COUNT
+		)
+		values (#{id,jdbcType=VARCHAR}, #{imageToken,jdbcType=VARCHAR}, #{sourceFileType,jdbcType=VARCHAR},
+		#{sourceFileMd5,jdbcType=VARCHAR}, #{sourceFilePath,jdbcType=VARCHAR}, #{targetFileType,jdbcType=VARCHAR},
+		#{targetFileMd5,jdbcType=VARCHAR}, #{targetFilePath,jdbcType=VARCHAR}, #{handleCode,jdbcType=VARCHAR},
+		#{handleTime,jdbcType=TIMESTAMP}, #{handleState,jdbcType=VARCHAR}, #{handleMsg,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}, #{lastUpdateTime,jdbcType=TIMESTAMP}, #{handleCount,jdbcType=INTEGER}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.siit.fc.model.FcTimerTasks">
+		insert into fc_timer_tasks
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="imageToken != null">
+				IMAGE_TOKEN,
+			</if>
+			<if test="sourceFileType != null">
+				SOURCE_FILE_TYPE,
+			</if>
+			<if test="sourceFileMd5 != null">
+				SOURCE_FILE_MD5,
+			</if>
+			<if test="sourceFilePath != null">
+				SOURCE_FILE_PATH,
+			</if>
+			<if test="targetFileType != null">
+				TARGET_FILE_TYPE,
+			</if>
+			<if test="targetFileMd5 != null">
+				TARGET_FILE_MD5,
+			</if>
+			<if test="targetFilePath != null">
+				TARGET_FILE_PATH,
+			</if>
+			<if test="handleCode != null">
+				HANDLE_CODE,
+			</if>
+			<if test="handleTime != null">
+				HANDLE_TIME,
+			</if>
+			<if test="handleState != null">
+				HANDLE_STATE,
+			</if>
+			<if test="handleMsg != null">
+				HANDLE_MSG,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="lastUpdateTime != null">
+				LAST_UPDATE_TIME,
+			</if>
+			<if test="handleCount != null">
+				HANDLE_COUNT,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="imageToken != null">
+				#{imageToken,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFileType != null">
+				#{sourceFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFileMd5 != null">
+				#{sourceFileMd5,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFilePath != null">
+				#{sourceFilePath,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFileType != null">
+				#{targetFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFileMd5 != null">
+				#{targetFileMd5,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFilePath != null">
+				#{targetFilePath,jdbcType=VARCHAR},
+			</if>
+			<if test="handleCode != null">
+				#{handleCode,jdbcType=VARCHAR},
+			</if>
+			<if test="handleTime != null">
+				#{handleTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="handleState != null">
+				#{handleState,jdbcType=VARCHAR},
+			</if>
+			<if test="handleMsg != null">
+				#{handleMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastUpdateTime != null">
+				#{lastUpdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="handleCount != null">
+				#{handleCount,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.siit.fc.model.FcTimerTasks">
+		update fc_timer_tasks
+		<set>
+			<if test="imageToken != null">
+				IMAGE_TOKEN = #{imageToken,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFileType != null">
+				SOURCE_FILE_TYPE = #{sourceFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFileMd5 != null">
+				SOURCE_FILE_MD5 = #{sourceFileMd5,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceFilePath != null">
+				SOURCE_FILE_PATH = #{sourceFilePath,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFileType != null">
+				TARGET_FILE_TYPE = #{targetFileType,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFileMd5 != null">
+				TARGET_FILE_MD5 = #{targetFileMd5,jdbcType=VARCHAR},
+			</if>
+			<if test="targetFilePath != null">
+				TARGET_FILE_PATH = #{targetFilePath,jdbcType=VARCHAR},
+			</if>
+			<if test="handleCode != null">
+				HANDLE_CODE = #{handleCode,jdbcType=VARCHAR},
+			</if>
+			<if test="handleTime != null">
+				HANDLE_TIME = #{handleTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="handleState != null">
+				HANDLE_STATE = #{handleState,jdbcType=VARCHAR},
+			</if>
+			<if test="handleMsg != null">
+				HANDLE_MSG = #{handleMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="lastUpdateTime != null">
+				LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="handleCount != null">
+				HANDLE_COUNT = #{handleCount,jdbcType=INTEGER},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.siit.fc.model.FcTimerTasks">
+		update fc_timer_tasks
+		set IMAGE_TOKEN = #{imageToken,jdbcType=VARCHAR},
+		SOURCE_FILE_TYPE = #{sourceFileType,jdbcType=VARCHAR},
+		SOURCE_FILE_MD5 = #{sourceFileMd5,jdbcType=VARCHAR},
+		SOURCE_FILE_PATH = #{sourceFilePath,jdbcType=VARCHAR},
+		TARGET_FILE_TYPE = #{targetFileType,jdbcType=VARCHAR},
+		TARGET_FILE_MD5 = #{targetFileMd5,jdbcType=VARCHAR},
+		TARGET_FILE_PATH = #{targetFilePath,jdbcType=VARCHAR},
+		HANDLE_CODE = #{handleCode,jdbcType=VARCHAR},
+		HANDLE_TIME = #{handleTime,jdbcType=TIMESTAMP},
+		HANDLE_STATE = #{handleState,jdbcType=VARCHAR},
+		HANDLE_MSG = #{handleMsg,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+		LAST_UPDATE_TIME = #{lastUpdateTime,jdbcType=TIMESTAMP},
+		HANDLE_COUNT = #{handleCount,jdbcType=INTEGER}
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+
+	<!-- 锁定待处理任务 -->
+	<update id="updateLockNewTask">
+		update fc_timer_tasks
+		set HANDLE_CODE = #{handleCode},
+		HANDLE_TIME = #{nowDate},
+		LAST_UPDATE_TIME = #{nowDate}
+		where HANDLE_STATE = '0'
+		AND HANDLE_CODE IS NULL
+		LIMIT #{lockRownum}
+	</update>
+	<!-- 锁定其他服务长期未处理成功的任务 -->
+	<update id="updateLockOldTask">
+		update fc_timer_tasks
+		set HANDLE_CODE = #{handleCode},
+		HANDLE_TIME = #{nowDate},
+		LAST_UPDATE_TIME = #{nowDate},
+		HANDLE_STATE = '0'
+		where TIMESTAMPDIFF(HOUR,HANDLE_TIME, #{nowDate}) <![CDATA[>]]> 3
+		AND HANDLE_STATE <![CDATA[<>]]> '2'
+		ORDER BY HANDLE_COUNT
+		LIMIT #{lockRownum}
+	</update>
+	<!-- 查询锁定待处理任务 -->
+	<select id="findLockTask" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from fc_timer_tasks
+		where HANDLE_STATE = #{handleState}
+		AND HANDLE_CODE = #{handleCode}
+	</select>
+</mapper>
